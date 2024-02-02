@@ -1,13 +1,14 @@
 import json
 import os
 import re
+import codecs
 
 DIR = os.path.dirname(__file__)
 CHANGELOG_FILE = os.path.abspath(os.path.join(DIR, "../../../../../CHANGELOG.md"))
 
 
 def clean():
-    with open(CHANGELOG_FILE) as change_file:
+    with codecs.open(CHANGELOG_FILE, encoding='utf-8') as change_file:
         content = change_file.read()
     
     # remove empty/unused sections

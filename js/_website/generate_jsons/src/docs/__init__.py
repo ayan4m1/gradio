@@ -1,5 +1,6 @@
 import json
 import os
+import codecs
 
 from gradio_client.documentation import document_cls, generate_documentation
 
@@ -50,7 +51,7 @@ def add_demos():
             demos = [demo.strip() for demo in cls["tags"]["demos"].split(",")]
             for demo in demos:
                 demo_file = os.path.join(DEMOS_DIR, demo, "run.py")
-                with open(demo_file) as run_py:
+                with codecs.open(demo_file, encoding='utf-8') as run_py:
                     demo_code = run_py.read()
                 cls["demos"].append((demo, demo_code))
 

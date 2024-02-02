@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import codecs
 
 DIR = os.path.dirname(__file__)
 GUIDES_DIR = os.path.abspath(os.path.join(DIR, "../../../../../guides"))
@@ -15,7 +16,7 @@ for demo_folder in os.listdir(DEMOS_DIR):
     runfile = os.path.join(DEMOS_DIR, demo_folder, "run.py")
     if not os.path.exists(runfile):
         continue
-    with open(runfile) as run_py:
+    with codecs.open(runfile, encoding='utf-8') as run_py:
         demos[demo_folder] = run_py.read().replace(
             'if __name__ == "__main__":\n    demo.launch()', "demo.launch()"
         )
@@ -49,7 +50,7 @@ for guide_folder in guide_folders:
     guide_names.append({"category": pretty_guide_category, "guides": []})
     for guide_file in guide_list:
         guide_index, guide_name, pretty_guide_name = format_name(guide_file)
-        with open(os.path.join(GUIDES_DIR, guide_folder, guide_file)) as f:
+        with codecs.open(os.path.join(GUIDES_DIR, guide_folder, guide_file), encoding='utf-8') as f:
             guide_content = f.read()
 
         title = guide_content.split("\n")[0]
