@@ -81,8 +81,12 @@ include = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = [
-  "gradio"
+include = [
+  "/gradio",
+  "/test",
+  "/README.md",
+  "/requirements.txt",
+  "/requirements-oauth.txt",
 ]
 
 [tool.pyright]
