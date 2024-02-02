@@ -10,6 +10,7 @@ build/
 __tmp/*
 
 # JS build
+gradio/node
 gradio/templates/cdn
 gradio/templates/frontend
 
